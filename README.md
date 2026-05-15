@@ -1,6 +1,10 @@
 # Casket
 
-Small, easy-to-use authenticated encryption library for .NET.
+[![CI](https://github.com/CarriedWorldUniverse/casket-ts/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CarriedWorldUniverse/casket-ts/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/CarriedWorldUniverse/casket-ts?include_prereleases&sort=semver&display_name=tag)](https://github.com/CarriedWorldUniverse/casket-ts/releases)
+[![License](https://img.shields.io/github/license/CarriedWorldUniverse/casket-ts)](LICENSE)
+
+Small, easy-to-use authenticated encryption library for TypeScript / Node.js / Cloudflare Workers.
 
 - **AES-256-GCM** and **ChaCha20-Poly1305** with Argon2id key derivation
 - **Channel** module: Ed25519/P-256 identity + ECDH E2E encryption for frame-to-frame relay
