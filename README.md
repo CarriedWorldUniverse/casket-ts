@@ -8,13 +8,41 @@ Small, easy-to-use authenticated encryption library for TypeScript / Node.js / C
 
 - **AES-256-GCM** and **ChaCha20-Poly1305** with Argon2id key derivation
 - **Channel** module: Ed25519/P-256 identity + ECDH E2E encryption for frame-to-frame relay
-- Cross-compatible wire format with [@nexus-cw/casket](https://github.com/nexus-cw/casket-ts) (Node.js / Cloudflare Workers)
-- Targets `netstandard2.1`, `net8.0`, `net9.0`, `net10.0`
+- Cross-compatible wire format with the .NET Casket implementation
+- Runs on Node.js (>=18) and Cloudflare Workers
 
 ## Install
 
 ```
-dotnet add package Casket
+npm install @nexus-cw/casket
+```
+
+## Usage
+
+```ts
+import { sealWithPassword, unsealWithPassword } from '@nexus-cw/casket';
+
+const token = await sealWithPassword('secret message', 'correct horse battery staple');
+const plaintext = await unsealWithPassword(token, 'correct horse battery staple');
+```
+
+Key-based sealing (synchronous, raw key) is also available:
+
+```ts
+import { generateKey, sealWithKey, unsealWithKey, keySourceFromBuffer } from '@nexus-cw/casket';
+
+const key = generateKey();
+const source = keySourceFromBuffer(Buffer.from(key, 'base64url'));
+const token = sealWithKey('secret message', source);
+const plaintext = unsealWithKey(token, source);
+```
+
+## Develop
+
+```
+npm install
+npm run build
+npm test
 ```
 
 ## License
